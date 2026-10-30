@@ -1,0 +1,449 @@
+
+<!-- TOP BAR -->
+<header class="topbar">
+
+  <div class="breadcrumb">
+    <span>CASE/404</span>
+    <span class="breadcrumb-divider">/</span>
+    <span>DASHBOARD</span>
+  </div>
+
+  <div class="topbar-actions">
+    <div class="search-wrapper">
+      <span class="search-icon">⌕</span>
+
+      <input
+        type="search"
+        placeholder="Search cases, evidence, people..."
+        [value]="searchQuery"
+        (input)="onSearchInput($event)"
+      />
+
+      <span class="search-shortcut">SEARCH</span>
+
+      <div class="search-results" *ngIf="searchQuery">
+        <p class="search-heading">INVESTIGATION ARCHIVE</p>
+
+        <button
+          type="button"
+          class="search-result"
+          *ngFor="let result of filteredSearchItems"
+          (click)="selectSearchResult(result)"
+        >
+          <span class="result-icon">⌕</span>
+
+          <span class="result-copy">
+            <strong>{{ result.label }}</strong>
+            <small>{{ result.reference }}</small>
+          </span>
+
+          <span class="result-type">{{ result.type }}</span>
+        </button>
+
+        <p class="no-results" *ngIf="filteredSearchItems.length === 0">
+          No matching records found.
+        </p>
+      </div>
+    </div>
+
+    <button type="button" class="notification-button" aria-label="Notifications">
+      ♧
+      <span></span>
+    </button>
+
+    <div class="topbar-profile">
+      <div class="topbar-avatar">D</div>
+      <div>
+        <strong>Detective</strong>
+        <small>Level 03</small>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- DASHBOARD CONTENT -->
+<div class="dashboard-content">
+
+  <div class="page-heading">
+    <div>
+      <div class="eyebrow">
+        <span class="eyebrow-line"></span>
+        FRIDAY, OCTOBER 30 · PRIVATE INVESTIGATION DIVISION
+      </div>
+
+      <h1>Welcome back, <em>Detective.</em></h1>
+      <p>Every detail matters. Keep looking.</p>
+    </div>
+
+    <button
+      type="button"
+      class="archive-button"
+      (click)="selectNavigation('Cases')"
+    >
+      <span>＋</span> OPEN CASE ARCHIVE
+    </button>
+  </div>
+
+
+  <!-- NOTICE FOR MODULES NOT BUILT YET -->
+  <div class="development-notice" *ngIf="notice" aria-live="polite">
+    <span>CASE/404</span>
+    {{ notice }}
+    <button type="button" (click)="selectNavigation('Dashboard')">
+      Dismiss ×
+    </button>
+  </div>
+
+
+  <!-- MAIN GRID -->
+  <div class="dashboard-grid">
+
+    <!-- LEFT COLUMN -->
+    <section class="primary-column">
+
+      <div class="section-heading">
+        <div>
+          <span class="section-index">01 / CURRENT ASSIGNMENT</span>
+          <h2>Active Investigation</h2>
+        </div>
+
+        <span class="case-status">
+          <span class="status-dot"></span>
+          IN PROGRESS
+        </span>
+      </div>
+
+
+      <!-- FEATURED CASE -->
+      <article class="case-feature">
+
+        <div class="case-image">
+          <div class="image-top-label">
+            <span>CRIME SCENE</span>
+            <span>STUDIO A · 001</span>
+          </div>
+
+          <div class="image-bottom-label">
+            CONFIDENTIAL INVESTIGATION
+          </div>
+        </div>
+
+
+        <div class="case-information">
+
+          <div class="case-reference-row">
+            <span class="case-reference">CASE / 001</span>
+            <span class="case-category">HOMICIDE</span>
+            <span class="case-difficulty">MEDIUM</span>
+          </div>
+
+          <h3>The Last Photograph</h3>
+
+          <p class="case-description">
+            A famous photographer has been found dead in his private
+            studio. His final collection has disappeared. Four people
+            had access to the building that evening.
+          </p>
+
+          <div class="case-facts">
+
+            <div>
+              <span class="fact-icon">♙</span>
+              <div>
+                <strong>04</strong>
+                <small>PERSONS OF INTEREST</small>
+              </div>
+            </div>
+
+            <div>
+              <span class="fact-icon">◇</span>
+              <div>
+                <strong>12</strong>
+                <small>PIECES OF EVIDENCE</small>
+              </div>
+            </div>
+
+            <div>
+              <span class="fact-icon">◷</span>
+              <div>
+                <strong>23:45</strong>
+                <small>BODY DISCOVERED</small>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="progress-section">
+            <div class="progress-label">
+              <span>INVESTIGATION PROGRESS</span>
+              <strong>40%</strong>
+            </div>
+
+            <div class="progress-track">
+              <div class="progress-value"></div>
+            </div>
+          </div>
+
+
+          <button
+            type="button"
+            class="continue-button"
+            (click)="openCasePreview()"
+          >
+            CONTINUE INVESTIGATION
+            <span>→</span>
+          </button>
+
+        </div>
+      </article>
+
+
+      <!-- CURRENT LEADS -->
+      <section class="leads-section">
+
+        <div class="section-heading compact-heading">
+          <div>
+            <span class="section-index">02 / INVESTIGATOR'S DESK</span>
+            <h2>Outstanding Leads</h2>
+          </div>
+
+          <span class="subtle-count">03 OPEN</span>
+        </div>
+
+        <div class="lead-list">
+
+          <div class="lead-item">
+            <span class="lead-number">01</span>
+            <div class="lead-copy">
+              <strong>Verify camera timestamps</strong>
+              <small>Digital evidence · E06</small>
+            </div>
+            <span class="lead-state pending">PENDING</span>
+          </div>
+
+          <div class="lead-item">
+            <span class="lead-number">02</span>
+            <div class="lead-copy">
+              <strong>Review security access records</strong>
+              <small>Forensic records · E05</small>
+            </div>
+            <span class="lead-state review">REVIEW</span>
+          </div>
+
+          <div class="lead-item">
+            <span class="lead-number">03</span>
+            <div class="lead-copy">
+              <strong>Revisit Elena Vale's statement</strong>
+              <small>Suspect interview · S01</small>
+            </div>
+            <span class="lead-state pending">PENDING</span>
+          </div>
+
+        </div>
+      </section>
+
+    </section>
+
+
+    <!-- RIGHT COLUMN -->
+    <aside class="secondary-column">
+
+      <!-- STATISTICS -->
+      <section class="statistics-paper">
+
+        <div class="statistic">
+          <strong>03</strong>
+          <span>CASES SOLVED</span>
+        </div>
+
+        <div class="statistic">
+          <strong>1,250</strong>
+          <span>INVESTIGATION POINTS</span>
+        </div>
+
+        <div class="statistic">
+          <strong>03</strong>
+          <span>DETECTIVE RANK</span>
+        </div>
+
+      </section>
+
+
+      <!-- RECENT ACTIVITY -->
+      <section class="activity-panel">
+
+        <div class="panel-heading">
+          <div>
+            <span class="section-index">FIELD REPORTS</span>
+            <h2>Recent Activity</h2>
+          </div>
+
+          <span class="activity-period">LAST 24 HOURS</span>
+        </div>
+
+        <div class="activity-list">
+
+          <article
+            class="activity-item"
+            *ngFor="let activity of activities"
+          >
+
+            <div
+              class="activity-avatar"
+              [ngClass]="activity.color"
+            >
+              {{ activity.initials }}
+            </div>
+
+            <div class="activity-copy">
+              <strong>{{ activity.title }}</strong>
+              <span>{{ activity.detail }}</span>
+              <small>{{ activity.time }}</small>
+            </div>
+
+            <span class="activity-arrow">↗</span>
+
+          </article>
+
+        </div>
+
+        <button
+          type="button"
+          class="activity-footer"
+          (click)="selectNavigation('Notebook')"
+        >
+          VIEW INVESTIGATION HISTORY <span>→</span>
+        </button>
+
+      </section>
+
+
+      <!-- HANDWRITTEN NOTE -->
+      <section class="quote-paper">
+
+        <div class="paper-pin"></div>
+        <span class="paper-label">A NOTE TO REMEMBER</span>
+
+        <blockquote>
+          "The truth is rarely pure, and never simple."
+        </blockquote>
+
+        <span class="paper-author">— OSCAR WILDE</span>
+
+        <div class="paper-stamp">FILED</div>
+
+      </section>
+
+
+      <!-- PEOPLE OF INTEREST -->
+      <section class="suspects-panel">
+
+        <div class="panel-heading">
+          <div>
+            <span class="section-index">PERSONS OF INTEREST</span>
+            <h2>The Four Suspects</h2>
+          </div>
+
+          <span class="subtle-count">04 FILES</span>
+        </div>
+
+        <div class="suspect-list">
+
+          <div class="suspect-item" *ngFor="let suspect of suspects">
+
+            <div
+              class="suspect-image"
+              [style.background-image]="'url(' + suspect.image + ')'"
+            ></div>
+
+            <div class="suspect-information">
+              <strong>{{ suspect.name }}</strong>
+              <span>{{ suspect.role }}</span>
+            </div>
+
+            <span class="suspect-indicator"></span>
+
+          </div>
+
+        </div>
+
+        <button
+          type="button"
+          class="suspect-footer"
+          (click)="selectNavigation('Suspects')"
+        >
+          OPEN SUSPECT DOSSIERS <span>→</span>
+        </button>
+
+      </section>
+
+    </aside>
+
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer class="dashboard-footer">
+    <span>CASE/404 · PRIVATE INVESTIGATION DIVISION</span>
+    <span>TRUTH ALWAYS LEAVES A TRACE.</span>
+    <span>BUILD 001.26</span>
+  </footer>
+
+</div>
+
+
+<!-- CASE PREVIEW MODAL -->
+<div
+  class="modal-backdrop"
+  *ngIf="showCasePreview"
+  (click)="closeCasePreview()"
+>
+
+  <section
+    class="case-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    (click)="$event.stopPropagation()"
+  >
+
+    <div class="modal-top-line">
+      <span>CONFIDENTIAL · CASE 001</span>
+
+      <button
+        type="button"
+        class="modal-close"
+        aria-label="Close"
+        (click)="closeCasePreview()"
+      >×</button>
+    </div>
+
+    <span class="section-index">CURRENT ASSIGNMENT</span>
+
+    <h2 id="modal-title">The Last Photograph</h2>
+
+    <p>
+      Adrian Cross was found dead in his private studio.
+      His final photographic collection is missing.
+      Four suspects are connected to the events of that night.
+    </p>
+
+    <div class="modal-details">
+      <span>CLASSIFICATION: <strong>HOMICIDE</strong></span>
+      <span>DIFFICULTY: <strong>MEDIUM</strong></span>
+      <span>STATUS: <strong>ACTIVE</strong></span>
+    </div>
+
+    <button
+      type="button"
+      class="continue-button modal-action"
+      (click)="openCaseWorkspace()"
+    >
+      OPEN CASE DOSSIER <span>→</span>
+    </button>
+
+  </section>
+
+</div>

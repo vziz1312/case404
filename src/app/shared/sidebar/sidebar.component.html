@@ -1,0 +1,69 @@
+
+<aside class="sidebar">
+
+  <div class="brand-block">
+    <div class="brand-logo">
+      CASE<span class="brand-slash">/</span><span class="brand-number">404</span>
+    </div>
+    <div class="brand-caption">PRIVATE INVESTIGATION DIVISION</div>
+  </div>
+
+  <div class="sidebar-divider"></div>
+
+  <div class="office-label">
+    <span class="status-dot"></span>
+    FIELD OFFICE <span>04</span>
+  </div>
+
+  <nav class="sidebar-navigation">
+
+    <div class="navigation-group" *ngFor="let group of navigationGroups">
+
+      <p class="navigation-title">{{ group.title }}</p>
+
+      <button
+        type="button"
+        class="navigation-item"
+        *ngFor="let item of group.items"
+        [class.active]="activeNavigation === item.label"
+        [attr.aria-current]="activeNavigation === item.label ? 'page' : null"
+        (click)="selectNavigation(item.label)"
+        [disabled]="item.label !== 'Dashboard' && item.label !== 'Cases'">
+
+        <span class="navigation-icon">{{ item.icon }}</span>
+        <span class="navigation-text">{{ item.label }}</span>
+
+        <span class="navigation-badge" *ngIf="item.badge">
+          {{ item.badge }}
+        </span>
+
+      </button>
+
+    </div>
+
+  </nav>
+
+  <div class="sidebar-bottom">
+
+    <div class="sidebar-quote">
+      <span class="quote-mark">“</span>
+      <p>Every detail matters. Especially the ones nobody notices.</p>
+      <span class="quote-author">— INVESTIGATION MANUAL</span>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="detective-mini-profile">
+      <div class="profile-avatar">D</div>
+
+      <div class="profile-information">
+        <strong>Detective</strong>
+        <span>FIELD AGENT · LEVEL 03</span>
+      </div>
+
+      <span class="profile-menu">···</span>
+    </div>
+
+  </div>
+
+</aside>

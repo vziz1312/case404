@@ -1,0 +1,67 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.app-shell {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  background: #141413;
+  color: #e9dfce;
+}
+
+app-sidebar {
+  display: block;
+  min-width: 0;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.main-area {
+  min-width: 0;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background:
+    radial-gradient(
+      ellipse at 75% 5%,
+      rgba(130, 83, 40, 0.10),
+      transparent 38%
+    ),
+    #171715;
+}
+
+/* Medium screens */
+@media (max-width: 1100px) {
+  .app-shell {
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+}
+
+/* Tablets */
+@media (max-width: 950px) {
+  .app-shell {
+    grid-template-columns: 205px minmax(0, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 680px) {
+  .app-shell {
+    display: block;
+  }
+
+  app-sidebar {
+    position: relative;
+    height: auto;
+  }
+
+  .main-area {
+    min-height: calc(100vh - 80px);
+  }
+}

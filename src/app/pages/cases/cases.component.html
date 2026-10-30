@@ -1,0 +1,217 @@
+
+<div class="cases-page">
+
+  <!-- PAGE HEADER -->
+  <header class="page-heading">
+    <div>
+      <div class="eyebrow">PRIVATE INVESTIGATION DIVISION / ARCHIVE</div>
+      <h1>Case <em>Files.</em></h1>
+      <p class="heading-description">
+        Every unanswered question leaves a trace.
+      </p>
+    </div>
+
+    <div class="archive-counter">
+      <span>ARCHIVE RECORDS</span>
+      <strong>{{ totalCases | number:'2.0' }}</strong>
+      <small>REGISTERED CASES</small>
+    </div>
+  </header>
+
+  <!-- ARCHIVE SUMMARY -->
+  <section class="archive-summary">
+
+    <div class="summary-item">
+      <span class="summary-number">{{ totalCases | number:'2.0' }}</span>
+      <span class="summary-label">TOTAL FILES</span>
+    </div>
+
+    <div class="summary-item">
+      <span class="summary-number">{{ activeCases | number:'2.0' }}</span>
+      <span class="summary-label">ACTIVE</span>
+    </div>
+
+    <div class="summary-item">
+      <span class="summary-number">{{ completedCases | number:'2.0' }}</span>
+      <span class="summary-label">SOLVED</span>
+    </div>
+
+    <div class="summary-item">
+      <span class="summary-number">{{ lockedCases | number:'2.0' }}</span>
+      <span class="summary-label">CLASSIFIED</span>
+    </div>
+
+  </section>
+
+  <!-- FILTERS AND SEARCH -->
+  <section class="archive-toolbar">
+
+    <div class="filter-group">
+      <button
+        *ngFor="let filter of filters"
+        type="button"
+        [class.active]="activeFilter === filter"
+        (click)="selectFilter(filter)">
+        {{ filter }}
+      </button>
+    </div>
+
+    <div class="archive-search">
+      <span>⌕</span>
+
+      <input
+        type="text"
+        placeholder="Search case files..."
+        [(ngModel)]="searchQuery">
+    </div>
+
+  </section>
+
+  <!-- CASE GRID -->
+  <section class="case-grid">
+
+    <article
+      class="case-card"
+      *ngFor="let caseFile of filteredCases"
+      [class.locked]="caseFile.status === 'Locked'">
+
+      <!-- CASE COVER -->
+      <div class="case-image">
+
+        <img
+          *ngIf="caseFile.image"
+          [src]="caseFile.image"
+          [alt]="caseFile.title">
+
+        <div
+          *ngIf="!caseFile.image"
+          class="classified-image">
+
+          <span>CASE / {{ caseFile.id }}</span>
+          <strong>?</strong>
+          <small>VISUAL EVIDENCE CLASSIFIED</small>
+
+        </div>
+
+        <span
+          class="case-status"
+          [ngClass]="caseFile.status.toLowerCase()">
+
+          {{ caseFile.status }}
+
+        </span>
+
+        <span class="case-number">
+          FILE / {{ caseFile.id }}
+        </span>
+
+      </div>
+
+      <!-- CASE INFORMATION -->
+      <div class="case-content">
+
+        <div class="case-meta">
+
+          <span>{{ caseFile.category }}</span>
+
+          <span
+            class="difficulty"
+            [ngClass]="caseFile.difficulty.toLowerCase()">
+
+            {{ caseFile.difficulty }}
+
+          </span>
+
+        </div>
+
+        <h2>{{ caseFile.title }}</h2>
+
+        <p class="case-description">
+          {{ caseFile.description }}
+        </p>
+
+        <div class="case-location">
+          <span>⌖</span>
+          {{ caseFile.location }}
+        </div>
+
+        <div class="case-divider"></div>
+
+        <!-- CASE STATISTICS -->
+        <div class="case-statistics">
+
+          <div>
+            <strong>{{ caseFile.suspects | number:'2.0' }}</strong>
+            <small>SUSPECTS</small>
+          </div>
+
+          <div>
+            <strong>{{ caseFile.evidence | number:'2.0' }}</strong>
+            <small>EVIDENCE</small>
+          </div>
+
+          <div>
+            <strong>{{ caseFile.progress }}%</strong>
+            <small>PROGRESS</small>
+          </div>
+
+        </div>
+
+        <!-- INVESTIGATION PROGRESS -->
+        <div class="progress-track">
+          <div
+            class="progress-fill"
+            [style.width.%]="caseFile.progress">
+          </div>
+        </div>
+
+        <!-- CASE ACCESS STATUS -->
+        <div class="case-action">
+
+          <span *ngIf="caseFile.status === 'Active'">
+            CONTINUE INVESTIGATION
+          </span>
+
+          <span *ngIf="caseFile.status === 'Completed'">
+            REVIEW CASE
+          </span>
+
+          <span *ngIf="caseFile.status === 'Locked'">
+            ACCESS RESTRICTED
+          </span>
+
+          <span>→</span>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </section>
+
+  <!-- EMPTY SEARCH RESULTS -->
+  <div
+    class="empty-state"
+    *ngIf="filteredCases.length === 0">
+
+    <span>NO RECORDS FOUND</span>
+
+    <h2>The archive is silent.</h2>
+
+    <p>
+      No case matches your search. Try another reference.
+    </p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="archive-footer">
+
+    <span>CASE/404 · PRIVATE INVESTIGATION DIVISION</span>
+
+    <span>ALL RECORDS CONFIDENTIAL</span>
+
+  </footer>
+
+</div>
