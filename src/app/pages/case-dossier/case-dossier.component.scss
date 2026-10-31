@@ -1,0 +1,1047 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  color: var(--text);
+}
+
+.dossier-page {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 28px 48px 50px;
+  animation: dossierReveal 0.5s ease both;
+}
+
+@keyframes dossierReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TOPBAR */
+
+.dossier-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.back-button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.back-button:hover {
+  color: var(--brass);
+}
+
+.back-button span {
+  margin-right: 8px;
+  font-size: 15px;
+}
+
+.topbar-reference {
+  color: var(--muted);
+}
+
+.topbar-reference span {
+  margin: 0 8px;
+  color: var(--oxblood);
+}
+
+.confidential-label {
+  color: #c17b72;
+}
+
+.confidential-label span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--oxblood);
+}
+
+/* HEADING */
+
+.dossier-heading {
+  padding: 58px 0 42px;
+  text-align: center;
+}
+
+.case-reference,
+.section-label {
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.dossier-heading h1 {
+  margin: 17px 0 8px;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: clamp(42px, 6vw, 68px);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.tagline {
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+}
+
+.case-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.case-tags span {
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+/* OVERVIEW */
+
+.case-overview {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
+  gap: 42px;
+  align-items: center;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.case-cover {
+  position: relative;
+  min-width: 0;
+}
+
+.case-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: sepia(12%) contrast(1.05);
+}
+
+.cover-stamp {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 9px 12px;
+  border: 1px solid rgba(170, 65, 65, 0.8);
+  color: #d18a80;
+  background: rgba(30, 12, 12, 0.8);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  transform: rotate(-5deg);
+}
+
+.case-information h2,
+.background-section h2 {
+  margin: 12px 0 16px;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 500;
+}
+
+.case-summary {
+  max-width: 540px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.information-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 20px;
+  margin-top: 35px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.information-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.information-item span {
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.information-item strong {
+  color: var(--paper);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* BACKGROUND STORY */
+
+.background-section {
+  max-width: 850px;
+  margin: 35px auto 0;
+  padding-bottom: 15px;
+}
+
+.background-section h2 {
+  font-size: 42px;
+}
+
+.background-intro {
+  margin-bottom: 32px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.story-content {
+  padding-left: 25px;
+  border-left: 2px solid rgba(170, 125, 70, 0.45);
+}
+
+.story-content p {
+  margin: 0 0 23px;
+  color: #c1b9ad;
+  font-size: 14px;
+  line-height: 2;
+}
+
+/* FOOTER */
+
+.dossier-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.2px;
+}
+
+/* NOT FOUND */
+
+.not-found {
+  display: flex;
+  min-height: 70vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.not-found h1 {
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 48px;
+}
+
+.not-found p {
+  color: var(--muted);
+}
+
+.not-found button {
+  margin-top: 20px;
+  padding: 12px 18px;
+  border: 1px solid var(--brass);
+  background: transparent;
+  color: var(--brass);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+  .dossier-page {
+    padding: 20px 24px 35px;
+  }
+
+  .case-overview {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .case-cover {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .dossier-page {
+    padding: 16px;
+  }
+
+  .dossier-topbar {
+    flex-wrap: wrap;
+  }
+
+  .topbar-reference {
+    order: 3;
+    width: 100%;
+  }
+
+  .dossier-heading {
+    padding: 42px 0 30px;
+  }
+
+  .case-overview {
+    padding: 18px;
+  }
+
+  .information-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dossier-footer {
+    flex-direction: column;
+  }
+}
+
+
+
+/* SUSPECT INVESTIGATION SECTION */
+
+.suspects-section {
+  margin: 25px 0 50px;
+}
+
+.suspects-section h2 {
+  margin: 12px 0;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 500;
+}
+
+.suspects-intro {
+  max-width: 650px;
+  margin-bottom: 32px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* GRID */
+
+.suspects-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+/* INDIVIDUAL FILE */
+
+.suspect-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #171614;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.suspect-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(184, 145, 88, 0.7);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* SQUARE PORTRAIT */
+
+.suspect-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #24211c;
+}
+
+.suspect-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  filter: sepia(12%) contrast(1.05);
+  transition: transform 0.45s ease;
+}
+
+.suspect-card:hover .suspect-photo img {
+  transform: scale(1.04);
+}
+
+.suspect-reference {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 8px 10px;
+  border: 1px solid rgba(180, 65, 65, 0.75);
+  background: rgba(25, 12, 12, 0.85);
+  color: #d18a80;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 1.2px;
+}
+
+/* PROFILE INFORMATION */
+
+.suspect-content {
+  padding: 15px;
+}
+
+.suspect-number {
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.suspect-content h3 {
+  margin: 8px 0 2px;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.suspect-role {
+  margin: 0;
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.suspect-age {
+  margin: 17px 0 20px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.suspect-detail,
+.suspect-statement {
+  margin-top: 20px;
+}
+
+.suspect-detail > span,
+.suspect-statement > span {
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.3px;
+}
+
+.suspect-detail p {
+  margin: 8px 0 0;
+  color: #bdb5aa;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.suspect-statement {
+  margin-top: 24px;
+  padding: 16px;
+  border-left: 2px solid var(--oxblood);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.suspect-statement p {
+  margin: 9px 0 0;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .suspects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .suspects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* CRIME SCENE */
+
+.crime-scene-section {
+  margin: 55px 0 45px;
+}
+
+.crime-scene-section h2 {
+  margin: 12px 0;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 500;
+}
+
+.crime-scene-intro {
+  margin-bottom: 25px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.crime-scene-content {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 25px;
+  align-items: stretch;
+}
+
+.crime-scene-visual {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.crime-scene-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  filter: sepia(20%) brightness(0.7);
+}
+
+.crime-scene-visual span {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  padding: 9px 12px;
+  background: rgba(15, 13, 11, 0.85);
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.crime-scene-observations {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.observation {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.observation-number {
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.3px;
+}
+
+.observation p {
+  margin: 7px 0 0;
+  color: #c1b9ad;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+  .crime-scene-content {
+    grid-template-columns: 1fr;
+  }
+
+  .crime-scene-visual {
+    min-height: 240px;
+  }
+
+  .crime-scene-visual img {
+    min-height: 240px;
+  }
+}
+
+
+/* EVIDENCE ARCHIVE */
+
+.evidence-section {
+  margin: 65px 0 55px;
+}
+
+.evidence-section h2 {
+  margin: 12px 0;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 500;
+}
+
+.evidence-intro {
+  margin-bottom: 30px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 15px;
+  align-items: stretch;
+}
+
+.evidence-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(15, 14, 12, 0.8);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.evidence-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--brass);
+}
+
+.evidence-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #211c16;
+}
+
+.evidence-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.evidence-card:hover .evidence-image img {
+  transform: scale(1.04);
+}
+
+.evidence-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  height: calc(100% - auto);
+}
+
+.evidence-number {
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.evidence-content h3 {
+  min-height: 48px;
+  margin: 14px 0 8px;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.evidence-category {
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.evidence-content > p {
+  flex: 1;
+  margin: 15px 0 20px;
+  color: #bdb5aa;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.examine-button {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  padding: 11px 10px;
+  border: 1px solid var(--brass);
+  background: transparent;
+  color: var(--brass);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.examine-button:hover {
+  background: var(--brass);
+  color: #17130e;
+}
+
+.examine-button span {
+  font-size: 14px;
+}
+
+/* EVIDENCE EXAMINATION MODAL */
+
+.evidence-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+.evidence-modal {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: min(850px, 100%);
+  max-height: 85vh;
+  overflow-y: auto;
+  border: 1px solid rgba(184, 145, 88, 0.45);
+  background: #171614;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.65);
+  animation: evidenceModalIn 0.25s ease both;
+}
+
+@keyframes evidenceModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.evidence-modal-close {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.65);
+  color: var(--paper);
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.evidence-modal-image {
+  min-height: 380px;
+  background: #211c16;
+}
+
+.evidence-modal-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  display: block;
+  object-fit: cover;
+}
+
+.evidence-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 38px 30px 30px;
+}
+
+.evidence-modal-content h2 {
+  margin: 16px 0 8px;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 500;
+}
+
+.modal-divider {
+  width: 100%;
+  margin: 25px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.evidence-modal-content h3 {
+  color: var(--brass);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.evidence-modal-content > p {
+  color: #c1b9ad;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.investigator-note {
+  width: 100%;
+  margin-top: 25px;
+  padding: 16px;
+  border-left: 2px solid var(--oxblood);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.investigator-note span {
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.3px;
+}
+
+.investigator-note p {
+  margin: 10px 0 0;
+  color: #c1b9ad;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.close-examination-button {
+  width: 100%;
+  margin-top: auto;
+  padding: 13px;
+  border: 1px solid var(--brass);
+  background: transparent;
+  color: var(--brass);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.close-examination-button:hover {
+  background: var(--brass);
+  color: #17130e;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .evidence-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .evidence-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .evidence-modal {
+    grid-template-columns: 1fr;
+  }
+
+  .evidence-modal-image,
+  .evidence-modal-image img {
+    min-height: 230px;
+    max-height: 280px;
+  }
+}
+
+@media (max-width: 430px) {
+  .evidence-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.forensic-findings {
+  margin-top: 28px;
+  padding: 20px;
+  background: rgba(220, 171, 107, 0.05);
+  border-left: 2px solid var(--brass);
+}
+
+.forensic-findings h3 {
+  margin: 0 0 16px;
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.forensic-findings ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: finding;
+}
+
+.forensic-findings li {
+  position: relative;
+  padding: 12px 0 12px 38px;
+  border-bottom: 1px solid rgba(220, 171, 107, 0.12);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.7;
+  counter-increment: finding;
+}
+
+.forensic-findings li:last-child {
+  border-bottom: none;
+}
+
+.forensic-findings li::before {
+  content: counter(finding, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 13px;
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+/* Compact evidence examination — desktop */
+.evidence-modal {
+  width: min(1050px, calc(100vw - 48px));
+  height: min(760px, calc(100vh - 40px));
+  max-height: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.evidence-modal-image {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.evidence-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.evidence-modal-content {
+  height: 100%;
+  min-height: 0;
+  padding: 24px 28px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.evidence-modal-content .section-label {
+  margin-bottom: 10px;
+}
+
+.evidence-modal-content h2 {
+  margin: 0 0 6px;
+  font-size: 34px;
+}
+
+.evidence-modal-content .modal-divider {
+  margin: 16px 0;
+}
+
+.evidence-modal-content > h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.evidence-modal-content > p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.forensic-findings {
+  margin-top: 16px;
+  padding: 12px 16px;
+}
+
+.forensic-findings h3 {
+  margin-bottom: 6px;
+}
+
+.forensic-findings li {
+  padding: 7px 0 7px 30px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.forensic-findings li::before {
+  top: 8px;
+}
+
+.forensic-findings {
+  margin-top: 22px;
+  padding: 16px 20px;
+}
+
+.forensic-findings h3 {
+  margin-bottom: 8px;
+}
+
+.forensic-findings li {
+  padding: 9px 0 9px 34px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.forensic-findings li::before {
+  top: 10px;
+}

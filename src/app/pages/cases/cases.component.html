@@ -71,10 +71,10 @@
   <section class="case-grid">
 
     <article
-      class="case-card"
-      *ngFor="let caseFile of filteredCases"
-      [class.locked]="caseFile.status === 'Locked'">
-
+  class="case-card"
+  *ngFor="let caseFile of filteredCases"
+  [class.locked]="caseFile.status === 'Locked'"
+  (click)="openCase(caseFile)">
       <!-- CASE COVER -->
       <div class="case-image">
 
@@ -166,23 +166,25 @@
         </div>
 
         <!-- CASE ACCESS STATUS -->
-        <div class="case-action">
+        <button
+  class="case-action"
+  [disabled]="caseFile.status === 'Locked'"
+  (click)="openCase(caseFile); $event.stopPropagation()">
 
-          <span *ngIf="caseFile.status === 'Active'">
-            CONTINUE INVESTIGATION
-          </span>
+  <span *ngIf="caseFile.status === 'Active'">
+    CONTINUE INVESTIGATION
+  </span>
 
-          <span *ngIf="caseFile.status === 'Completed'">
-            REVIEW CASE
-          </span>
+  <span *ngIf="caseFile.status === 'Completed'">
+    REVIEW CASE
+  </span>
 
-          <span *ngIf="caseFile.status === 'Locked'">
-            ACCESS RESTRICTED
-          </span>
+  <span *ngIf="caseFile.status === 'Locked'">
+    ACCESS RESTRICTED
+  </span>
 
-          <span>→</span>
-
-        </div>
+  <span>→</span>
+</button>
 
       </div>
 

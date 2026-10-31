@@ -1,0 +1,327 @@
+
+<div class="dossier-page" *ngIf="dossier; else notFound">
+
+  <!-- Top navigation -->
+  <header class="dossier-topbar">
+    <button class="back-button" (click)="goBack()">
+      <span>←</span> CASE ARCHIVE
+    </button>
+
+    <div class="topbar-reference">
+      CASE/404 <span>/</span> DOSSIER {{ dossier.id }}
+    </div>
+
+    <div class="confidential-label">
+      <span></span> CONFIDENTIAL
+    </div>
+  </header>
+
+  <!-- Dossier heading -->
+  <section class="dossier-heading">
+    <div class="case-reference">INVESTIGATION FILE — {{ dossier.id }}</div>
+
+    <h1>{{ dossier.title }}</h1>
+
+    <p class="tagline">{{ dossier.tagline }}</p>
+
+    <div class="case-tags">
+      <span>{{ dossier.category }}</span>
+      <span>{{ dossier.difficulty }} DIFFICULTY</span>
+      <span>{{ dossier.status.toUpperCase() }}</span>
+    </div>
+  </section>
+
+  <!-- Case cover and information -->
+  <section class="case-overview">
+
+    <div class="case-cover">
+      <img
+        src="assets/images/case-cover.png"
+        alt="Arthur Moreau investigation case cover">
+      <div class="cover-stamp">CASE FILE 001</div>
+    </div>
+
+    <div class="case-information">
+      <div class="section-label">01 — INCIDENT REPORT</div>
+
+      <h2>Case Overview</h2>
+
+      <p class="case-summary">{{ dossier.summary }}</p>
+
+      <div class="information-grid">
+        <div class="information-item">
+          <span>VICTIM</span>
+          <strong>{{ dossier.victim }}</strong>
+        </div>
+
+        <div class="information-item">
+          <span>LOCATION</span>
+          <strong>{{ dossier.location }}</strong>
+        </div>
+
+        <div class="information-item">
+          <span>DATE OF INCIDENT</span>
+          <strong>{{ dossier.date }}</strong>
+        </div>
+
+        <div class="information-item">
+          <span>CASE STATUS</span>
+          <strong>{{ dossier.status }}</strong>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Background story -->
+  <section class="background-section">
+    <div class="section-label">02 — BACKGROUND INVESTIGATION</div>
+
+    <h2>Before the Incident</h2>
+
+    <p class="background-intro">
+      Understanding the victim's life may help uncover the circumstances
+      that led to his death.
+    </p>
+
+    <div class="story-content">
+      <p *ngFor="let paragraph of dossier.background">
+        {{ paragraph }}
+      </p>
+    </div>
+  </section>
+
+
+<!-- CRIME SCENE -->
+<section class="crime-scene-section">
+
+  <div class="section-label">03 — CRIME SCENE REPORT</div>
+
+  <h2>Inside Studio A</h2>
+
+  <p class="crime-scene-intro">
+    Initial observations recorded by the first investigators
+    at the scene of Arthur Moreau's death.
+  </p>
+
+  <div class="crime-scene-content">
+
+    <div class="crime-scene-visual">
+      <img
+        src="assets/images/detective-office-bg.png"
+        alt="Atmospheric detective investigation room">
+      <span>STUDIO A — PARIS</span>
+    </div>
+
+    <div class="crime-scene-observations">
+      <div
+        class="observation"
+        *ngFor="let observation of dossier.crimeScene; let i = index">
+
+        <span class="observation-number">
+          OBSERVATION {{ (i + 1).toString().padStart(2, '0') }}
+        </span>
+
+        <p>{{ observation }}</p>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SUSPECTS -->
+<section class="suspects-section">
+
+  <div class="section-label">04 — PERSONS OF INTEREST</div>
+
+  <h2>Meet the Suspects</h2>
+
+  <p class="suspects-intro">
+    Four individuals were connected to Arthur Moreau.
+    Examine their profiles and consider their statements carefully.
+  </p>
+
+  <div class="suspects-grid">
+
+    <article
+      class="suspect-card"
+      *ngFor="let suspect of dossier.suspects">
+
+      <div class="suspect-photo">
+        <img [src]="suspect.image" [alt]="suspect.name">
+        <span class="suspect-reference">PERSON OF INTEREST</span>
+      </div>
+
+      <div class="suspect-content">
+
+        <div class="suspect-number">
+          SUBJECT FILE
+        </div>
+
+        <h3>{{ suspect.name }}</h3>
+
+        <p class="suspect-role">{{ suspect.role }}</p>
+
+        <div class="suspect-age">
+          AGE: {{ suspect.age }}
+        </div>
+
+        <div class="suspect-detail">
+          <span>BACKGROUND</span>
+          <p>{{ suspect.description }}</p>
+        </div>
+
+        <div class="suspect-detail">
+          <span>CONNECTION TO VICTIM</span>
+          <p>{{ suspect.connection }}</p>
+        </div>
+
+        <div class="suspect-statement">
+          <span>RECORDED STATEMENT</span>
+          <p>“{{ suspect.statement }}”</p>
+        </div>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- EVIDENCE ARCHIVE -->
+<section class="evidence-section">
+
+  <div class="section-label">05 — EVIDENCE ARCHIVE</div>
+
+  <h2>Evidence Archive</h2>
+
+  <p class="evidence-intro">
+    Items collected at the scene and during the initial investigation.
+    <br>
+    Examine each piece of evidence to uncover important details.
+  </p>
+
+  <div class="evidence-grid">
+
+    <article
+      class="evidence-card"
+      *ngFor="let item of dossier.evidence">
+
+      <div class="evidence-image">
+        <img [src]="item.image" [alt]="item.name">
+      </div>
+
+      <div class="evidence-content">
+
+        <span class="evidence-number">
+          EVIDENCE {{ item.id }}
+        </span>
+
+        <h3>{{ item.name }}</h3>
+
+        <span class="evidence-category">
+          {{ item.category }}
+        </span>
+
+        <p>{{ item.description }}</p>
+
+        <button
+          class="examine-button"
+          (click)="examineEvidence(item)">
+
+          EXAMINE EVIDENCE <span>→</span>
+
+        </button>
+
+      </div>
+    </article>
+
+  </div>
+
+</section>
+
+
+  <div class="dossier-footer">
+    <span>CASE/404 — DETECTIVE DIVISION</span>
+    <span>END OF FILE EXCERPT</span>
+  </div>
+
+</div>
+
+<ng-template #notFound>
+  <div class="not-found">
+    <h1>FILE NOT FOUND</h1>
+    <p>This investigation file does not exist or is unavailable.</p>
+    <button (click)="goBack()">RETURN TO CASE ARCHIVE</button>
+  </div>
+</ng-template>
+
+
+<!-- EVIDENCE EXAMINATION MODAL -->
+<div
+  class="evidence-modal-overlay"
+  *ngIf="selectedEvidence as evidence"
+  (click)="closeEvidence()">
+
+  <div
+    class="evidence-modal"
+    (click)="$event.stopPropagation()">
+
+    <button
+      class="evidence-modal-close"
+      (click)="closeEvidence()">
+      ×
+    </button>
+
+    <div class="evidence-modal-image">
+      <img [src]="evidence.image" [alt]="evidence.name">
+    </div>
+
+    <div class="evidence-modal-content">
+
+      <div class="section-label">
+        EVIDENCE {{ evidence.id }} — EXAMINATION
+      </div>
+
+      <h2>{{ evidence.name }}</h2>
+
+      <span class="evidence-category">
+        {{ evidence.category }}
+      </span>
+
+      <div class="modal-divider"></div>
+
+      <h3>Initial Findings</h3>
+<p>{{ evidence.description }}</p>
+
+<div class="forensic-findings">
+  <h3>FORENSIC ANALYSIS</h3>
+
+  <ul>
+    <li *ngFor="let finding of evidence.forensicFindings">
+      {{ finding }}
+    </li>
+  </ul>
+</div>
+
+      <div class="investigator-note">
+        <span>INVESTIGATOR'S NOTE</span>
+        <p>
+          This item has been documented and preserved for further
+          examination. Its significance remains undetermined.
+        </p>
+      </div>
+
+      <button
+        class="close-examination-button"
+        (click)="closeEvidence()">
+        CLOSE EXAMINATION
+      </button>
+
+    </div>
+  </div>
+</div>
+

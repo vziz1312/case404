@@ -1,0 +1,102 @@
+<div class="suspect-dossier-page" *ngIf="suspect; else notFound">
+
+  <!-- TOP BAR -->
+  <header class="dossier-topbar">
+    <button class="back-button" (click)="goBack()">
+      ← BACK TO DASHBOARD
+    </button>
+
+    <span>CASE/404 · CONFIDENTIAL PERSONNEL FILE</span>
+    <span class="confidential-label">RESTRICTED ACCESS</span>
+  </header>
+
+  <!-- PAGE HEADING -->
+  <section class="suspect-heading">
+    <span class="section-label">PERSON OF INTEREST · CASE 001</span>
+
+    <h1>{{ suspect.name }}</h1>
+
+    <p>{{ suspect.role }}</p>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="suspect-profile">
+
+    <div class="suspect-profile-image">
+      <img [src]="suspect.image" [alt]="suspect.name">
+      <span>SUBJECT PHOTOGRAPH · FILE 001</span>
+    </div>
+
+    <div class="suspect-profile-information">
+
+      <div class="profile-reference">
+        <span>SUBJECT REFERENCE</span>
+        <strong>CASE 001 / {{ suspect.id | uppercase }}</strong>
+      </div>
+
+      <div class="profile-detail">
+        <span>FULL NAME</span>
+        <strong>{{ suspect.name }}</strong>
+      </div>
+
+      <div class="profile-detail">
+        <span>OCCUPATION</span>
+        <strong>{{ suspect.role }}</strong>
+      </div>
+
+      <div class="profile-detail">
+        <span>AGE</span>
+        <strong>{{ suspect.age }} YEARS OLD</strong>
+      </div>
+
+      <div class="profile-detail">
+        <span>CONNECTION TO VICTIM</span>
+        <p>{{ suspect.connection }}</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- BACKGROUND -->
+  <section class="suspect-background">
+
+    <div class="section-label">01 — BACKGROUND INFORMATION</div>
+
+    <h2>Subject Background</h2>
+
+    <p>{{ suspect.description }}</p>
+
+  </section>
+
+  <!-- RECORDED STATEMENT -->
+  <section class="suspect-statement">
+
+    <div class="section-label">02 — INTERVIEW RECORD</div>
+
+    <h2>Recorded Statement</h2>
+
+    <blockquote>
+      “{{ suspect.statement }}”
+    </blockquote>
+
+    <span class="statement-note">
+      INITIAL STATEMENT · FURTHER INTERROGATION REQUIRED
+    </span>
+
+  </section>
+
+  <footer class="dossier-footer">
+    CASE/404 · PRIVATE INVESTIGATION DIVISION
+    <span>CONFIDENTIAL — AUTHORIZED PERSONNEL ONLY</span>
+  </footer>
+
+</div>
+
+<ng-template #notFound>
+  <div class="suspect-not-found">
+    <h2>SUBJECT NOT FOUND</h2>
+    <p>The requested personnel file does not exist.</p>
+    <button (click)="goBack()">RETURN TO DASHBOARD</button>
+  </div>
+</ng-template>

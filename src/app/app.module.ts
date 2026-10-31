@@ -8,6 +8,8 @@ import { CasesComponent } from './pages/cases/cases.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { CaseDossierComponent } from './pages/case-dossier/case-dossier.component';
+import { SuspectDossierComponent } from './pages/suspect-dossier/suspect-dossier.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     AppComponent,
     CasesComponent,
     DashboardComponent,
-    SidebarComponent
+    SidebarComponent,
+    CaseDossierComponent,
+    SuspectDossierComponent
   ],
   imports: [
     BrowserModule,

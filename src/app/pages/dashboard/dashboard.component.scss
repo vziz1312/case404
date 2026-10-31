@@ -1015,41 +1015,49 @@
 }
 
 .activity-item {
-  min-height: 74px;
+  min-height: 82px;
   display: flex;
   align-items: center;
-  gap: 11px;
-  border-bottom: 1px solid rgba(230,213,185,.1);
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(230, 213, 185, 0.12);
+  transition: background 0.2s ease;
+}
+
+.activity-item:hover {
+  background: rgba(220, 171, 107, 0.035);
 }
 
 .activity-avatar {
-  width: 39px;
-  height: 39px;
+  width: 42px;
+  height: 42px;
   display: grid;
   flex-shrink: 0;
   place-items: center;
-  border: 1px solid rgba(182,154,103,.3);
-  font-family: var(--font-display);
+  border: 1px solid rgba(182, 154, 103, 0.3);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.5px;
 }
 
 .activity-avatar.brass {
   color: #dfc69d;
-  background: #594632;
+  background: rgba(89, 70, 50, 0.55);
 }
 
 .activity-avatar.wine {
   color: #e1b9ae;
-  background: #612f32;
+  background: rgba(97, 47, 50, 0.55);
 }
 
 .activity-avatar.olive {
   color: #d0c99d;
-  background: #454632;
+  background: rgba(69, 70, 50, 0.55);
 }
 
 .activity-avatar.slate {
   color: #c5ced0;
-  background: #394448;
+  background: rgba(57, 68, 72, 0.55);
 }
 
 .activity-copy {
@@ -1057,28 +1065,32 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 
 .activity-copy strong {
-  color: #e6dbca;
-  font-size: 10px;
-  font-weight: 500;
+  color: #eee3d2;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 .activity-copy span {
-  color: #b0a18c;
-  font-size: 9px;
+  color: #c0b19b;
+  font-size: 11px;
+  line-height: 1.4;
 }
 
 .activity-copy small {
   color: #968875;
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
 }
 
 .activity-arrow {
   color: #b49a70;
+  font-size: 15px;
+  flex-shrink: 0;
 }
 
 .activity-footer,
@@ -1545,4 +1557,80 @@
   .statistic span {
     font-size: 6px;
   }
+}
+
+/* Suspect items — remove browser default button styling */
+.suspect-item {
+  appearance: none;
+  -webkit-appearance: none;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(220, 171, 107, 0.12);
+
+  color: var(--text);
+  font-family: var(--font-body);
+  text-align: left;
+
+  cursor: pointer;
+  padding: 12px 0;
+  transition: background 0.25s ease;
+}
+
+.suspect-item strong {
+  color: var(--text);
+}
+
+.suspect-item:hover {
+  background: rgba(220, 171, 107, 0.06);
+}
+
+.suspect-item:focus-visible {
+  outline: 1px solid var(--brass);
+  outline-offset: 3px;
+}
+
+/* Outstanding Leads — clickable noir rows */
+.lead-item {
+  appearance: none;
+  -webkit-appearance: none;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 74px;
+  padding: 12px 10px;
+
+  background: transparent !important;
+  border: none;
+  border-bottom: 1px solid rgba(230, 213, 185, 0.12);
+
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: inherit;
+  text-align: left;
+
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.lead-item:hover {
+  background: rgba(220, 171, 107, 0.06) !important;
+}
+
+.lead-item:focus-visible {
+  outline: 1px solid var(--brass);
+  outline-offset: -2px;
+}
+
+.lead-copy strong {
+  color: #eee3d2;
+}
+
+.lead-copy small {
+  color: #b0a18c;
 }

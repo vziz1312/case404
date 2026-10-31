@@ -40,6 +40,34 @@ interface SuspectPreview {
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  openSuspect(suspect: any): void {
+  const suspectRoutes: { [key: string]: string } = {
+    'Elena Vale': 'elena-vale',
+    'Victor Hale': 'victor-hale',
+    'Daniel Reed': 'daniel-reed',
+    'Margaret Whitmore': 'margaret-whitmore'
+  };
+
+  
+
+  const suspectId = suspectRoutes[suspect.name];
+
+  if (suspectId) {
+    this.router.navigate(['/suspects', suspectId]);
+  }
+}
+openLead(lead: string): void {
+  switch (lead) {
+    case 'camera':
+    case 'records':
+      this.router.navigate(['/cases', '001']);
+      break;
+
+    case 'elena':
+      this.router.navigate(['/suspects', 'elena-vale']);
+      break;
+  }
+}
 
   constructor(private router: Router) {}
 
@@ -67,36 +95,36 @@ export class DashboardComponent {
     }
   ];
 
-  activities: Activity[] = [
-    {
-      title: 'New evidence discovered',
-      detail: 'Camera metadata · E06',
-      time: '12 minutes ago',
-      initials: 'EV',
-      color: 'brass'
-    },
-    {
-      title: 'Suspect interrogated',
-      detail: 'Elena Vale · Interview 02',
-      time: '48 minutes ago',
-      initials: 'EV',
-      color: 'wine'
-    },
-    {
-      title: 'Notebook updated',
-      detail: 'Timeline reconstruction',
-      time: '2 hours ago',
-      initials: 'DN',
-      color: 'olive'
-    },
-    {
-      title: 'New contradiction found',
-      detail: 'Security access record',
-      time: 'Yesterday',
-      initials: 'MC',
-      color: 'slate'
-    }
-  ];
+ activities: Activity[] = [
+  {
+    title: 'Evidence examined',
+    detail: 'Vintage Camera · E01',
+    time: '12 minutes ago',
+    initials: 'E01',
+    color: 'brass'
+  },
+  {
+    title: 'Suspect interview recorded',
+    detail: 'Elena Vale · Interview 01',
+    time: '48 minutes ago',
+    initials: 'S01',
+    color: 'wine'
+  },
+  {
+    title: 'Investigation timeline updated',
+    detail: 'Studio A · October 30',
+    time: '2 hours ago',
+    initials: 'LOG',
+    color: 'olive'
+  },
+  {
+    title: 'Evidence registered',
+    detail: 'Studio Access Records · E04',
+    time: 'Yesterday',
+    initials: 'E04',
+    color: 'slate'
+  }
+];
 
   searchIndex: SearchItem[] = [
     { label: 'The Last Photograph', type: 'CASE FILE', reference: 'CASE / 001', section: 'Cases' },
@@ -109,12 +137,28 @@ export class DashboardComponent {
     { label: 'Broken Watch', type: 'EVIDENCE', reference: 'EVIDENCE / 01', section: 'Evidence' }
   ];
 
-  suspects: SuspectPreview[] = [
-    { name: 'Elena Vale', role: 'ART CURATOR', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=85' },
-    { name: 'Marcus Black', role: 'BUSINESS PARTNER', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=85' },
-    { name: 'Sophie Lane', role: 'ASSISTANT', image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=85' },
-    { name: 'Daniel Wright', role: 'JOURNALIST', image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=85' }
-  ];
+suspects = [
+  {
+    name: 'Elena Vale',
+    role: 'PERSONAL ASSISTANT',
+    image: 'assets/images/elena-vale.png'
+  },
+  {
+    name: 'Victor Hale',
+    role: 'BUSINESS PARTNER',
+    image: 'assets/images/victor-hale.png'
+  },
+  {
+    name: 'Daniel Reed',
+    role: 'INVESTIGATIVE JOURNALIST',
+    image: 'assets/images/daniel-reed.png'
+  },
+  {
+    name: 'Margaret Whitmore',
+    role: 'FORMER CLIENT',
+    image: 'assets/images/margaret-whitmore.png'
+  }
+];
 
   get filteredSearchItems(): SearchItem[] {
     const query = this.searchQuery.trim().toLowerCase();

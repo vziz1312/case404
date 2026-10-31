@@ -457,3 +457,37 @@
     flex-direction: column;
   }
 }
+
+
+
+
+/* Interactive case cards */
+.case-card {
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.case-card:not(.locked):hover {
+  transform: translateY(-5px);
+  border-color: var(--brass);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.case-card:not(.locked) img {
+  transition: transform 0.4s ease;
+}
+
+.case-card:not(.locked):hover img {
+  transform: scale(1.035);
+}
+
+.case-card:not(.locked):hover .case-action {
+  color: var(--brass);
+}
+
+.case-card.locked {
+  cursor: not-allowed;
+}

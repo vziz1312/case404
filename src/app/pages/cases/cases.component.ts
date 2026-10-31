@@ -1,4 +1,5 @@
 
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 export interface CaseFile {
@@ -21,6 +22,16 @@ export interface CaseFile {
   styleUrls: ['./cases.component.scss']
 })
 export class CasesComponent {
+  
+  constructor(private router: Router) {}
+
+  openCase(caseFile: CaseFile): void {
+  if (caseFile.status === 'Locked') {
+    return;
+  }
+
+  this.router.navigate(['/cases', caseFile.id]);
+}
 
   searchQuery = '';
 
@@ -81,6 +92,7 @@ export class CasesComponent {
       progress: 0,
       image: ''
     }
+    
   ];
 
   get totalCases(): number {

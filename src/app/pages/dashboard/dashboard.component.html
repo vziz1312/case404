@@ -55,7 +55,7 @@
       <div class="topbar-avatar">D</div>
       <div>
         <strong>Detective</strong>
-        <small>Level 03</small>
+        <small>Level 0</small>
       </div>
     </div>
   </div>
@@ -178,7 +178,7 @@
           <div class="progress-section">
             <div class="progress-label">
               <span>INVESTIGATION PROGRESS</span>
-              <strong>40%</strong>
+              <strong>0%</strong>
             </div>
 
             <div class="progress-track">
@@ -214,32 +214,32 @@
 
         <div class="lead-list">
 
-          <div class="lead-item">
+          <button type="button" class="lead-item" (click)="openLead('camera')">
             <span class="lead-number">01</span>
             <div class="lead-copy">
               <strong>Verify camera timestamps</strong>
-              <small>Digital evidence · E06</small>
+<small>Digital evidence · E01</small>
             </div>
             <span class="lead-state pending">PENDING</span>
-          </div>
+          </button>
 
-          <div class="lead-item">
+          <button type="button" class="lead-item" (click)="openLead('records')">
             <span class="lead-number">02</span>
             <div class="lead-copy">
               <strong>Review security access records</strong>
-              <small>Forensic records · E05</small>
+<small>Forensic records · E04</small>
             </div>
             <span class="lead-state review">REVIEW</span>
-          </div>
+          </button>
 
-          <div class="lead-item">
+          <button type="button" class="lead-item" (click)="openLead('elena')">
             <span class="lead-number">03</span>
             <div class="lead-copy">
               <strong>Revisit Elena Vale's statement</strong>
               <small>Suspect interview · S01</small>
             </div>
             <span class="lead-state pending">PENDING</span>
-          </div>
+          </button>
 
         </div>
       </section>
@@ -254,17 +254,17 @@
       <section class="statistics-paper">
 
         <div class="statistic">
-          <strong>03</strong>
+          <strong>00</strong>
           <span>CASES SOLVED</span>
         </div>
 
         <div class="statistic">
-          <strong>1,250</strong>
+          <strong>000</strong>
           <span>INVESTIGATION POINTS</span>
         </div>
 
         <div class="statistic">
-          <strong>03</strong>
+          <strong>01</strong>
           <span>DETECTIVE RANK</span>
         </div>
 
@@ -351,7 +351,11 @@
 
         <div class="suspect-list">
 
-          <div class="suspect-item" *ngFor="let suspect of suspects">
+          <button
+  type="button"
+  class="suspect-item"
+  *ngFor="let suspect of suspects"
+  (click)="openSuspect(suspect)">
 
             <div
               class="suspect-image"
@@ -365,7 +369,7 @@
 
             <span class="suspect-indicator"></span>
 
-          </div>
+          </button>
 
         </div>
 
@@ -425,10 +429,11 @@
     <h2 id="modal-title">The Last Photograph</h2>
 
     <p>
-      Adrian Cross was found dead in his private studio.
-      His final photographic collection is missing.
-      Four suspects are connected to the events of that night.
-    </p>
+  Arthur Moreau, a renowned photographer, was found dead
+  inside his private studio. His final photographic
+  collection has disappeared. Four individuals had access
+  to the studio on the night of October 30.
+</p>
 
     <div class="modal-details">
       <span>CLASSIFICATION: <strong>HOMICIDE</strong></span>
