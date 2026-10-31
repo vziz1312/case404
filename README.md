@@ -1,50 +1,56 @@
-# CASE/404
+# CASE/404 — Detective Investigation Game
 
-<p align="center">
-  <strong>EVERY CASE LEAVES A TRACE. EVERY TRACE TELLS A STORY.</strong>
-</p>
+**Every case has a story. Every clue has a purpose. Can you find the truth?**
 
-<p align="center">
-  A cinematic detective investigation experience built with Angular.
-</p>
+CASE/404 is a noir-inspired detective investigation game built with Angular. Step into the role of an investigator, explore crime scenes, examine evidence, study suspects, and uncover the truth behind mysterious cases.
 
----
+## Screenshots
 
-## Preview
+### Dashboard
 
-<p align="center">
-  <img src="screenshots/dashboard.png" width="100%" alt="CASE/404 Dashboard">
-</p>
+![CASE/404 Dashboard](screenshots/dashboard.png)
 
-<p align="center">
-  <img src="screenshots/cases.png" width="100%" alt="CASE/404 Case Archive">
-</p>
+### Case Archive
 
-## About the Project
-
-**CASE/404** is a detective investigation game where players step into the role of a private investigator, explore mysterious cases, examine evidence, and uncover the truth behind each crime.
-
-Inspired by noir detective stories, the project combines an immersive visual atmosphere with an interactive investigation interface.
-
-The goal is to create an experience where every detail matters and every decision brings the detective closer to the truth.
+![CASE/404 Case Archive](screenshots/cases.png)
 
 ## Features
 
-- **Detective Dashboard** — An overview of the investigation workspace.
-- **Case Archive** — Browse cases and explore their details.
-- **Case Filtering** — Search cases and filter them by status.
-- **Investigation Interface** — A foundation for managing suspects, evidence, and case progress.
-- **Noir Visual Identity** — A cinematic interface inspired by classic detective stories.
+- **Detective Dashboard** — Overview of investigations, recent activity, and outstanding leads.
+- **Case Management** — Browse cases and filter them by status.
+- **Case Dossiers** — Explore case backgrounds, crime scenes, suspects, and evidence.
+- **Suspect Investigation** — Access individual suspect profiles and recorded statements.
+- **Evidence Examination** — Inspect evidence and review fictional forensic findings.
+- **Noir Atmosphere** — A dark detective-agency interface inspired by classic crime investigation aesthetics.
 
-## Tech Stack
+## Featured Case: The Last Photograph
+
+**CASE 001 — Arthur Moreau**
+
+A renowned photographer is found dead inside his private studio in Paris. His final photographic collection has disappeared.
+
+Four individuals had access to the studio on the night of October 30.
+
+- Victim: Arthur Moreau
+- Location: Studio A, Paris
+- Category: Homicide
+- Difficulty: Medium
+- Suspects: 4
+- Evidence Archive: 5 items
+
+The investigation is only beginning.
+
+## Technology Stack
 
 | Technology | Purpose |
 |---|---|
-| Angular | Frontend framework |
+| Angular | Front-end framework |
 | TypeScript | Application logic |
-| HTML5 | Application structure |
+| HTML | Application structure |
 | SCSS | Styling and visual design |
-| LocalStorage | Planned local data persistence |
+| Angular Router | Navigation |
+| Local Mock Data | Case and investigation data |
+| LocalStorage | Planned local progress persistence |
 
 ## Getting Started
 
@@ -56,84 +62,99 @@ The goal is to create an experience where every detail matters and every decisio
 
 ### Installation
 
-1. Clone the repository:
+Clone the repository:
 
-   ```bash
-   git clone https://github.com/vziz1312/case404.git
-   ```
+```bash
+git clone https://github.com/vziz1312/case404.git
+```
 
-2. Navigate to the project directory:
+Navigate to the project:
 
-   ```bash
-   cd case404
-   ```
+```bash
+cd case404
+```
 
-3. Install dependencies:
+Install dependencies:
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-4. Start the development server:
+Start the development server:
 
-   ```bash
-   npm start
-   ```
+```bash
+npm start
+```
 
-5. Open your browser at:
+Open your browser at:
 
-   ```text
-   http://localhost:4200
-   ```
+```text
+http://localhost:4200
+```
 
 ## Project Structure
 
 ```text
 case404/
+│
+├── screenshots/
+│   ├── dashboard.png
+│   └── cases.png
+│
 ├── src/
 │   ├── app/
 │   │   ├── pages/
 │   │   │   ├── dashboard/
-│   │   │   └── cases/
+│   │   │   ├── cases/
+│   │   │   ├── case-dossier/
+│   │   │   └── suspect-dossier/
+│   │   │
 │   │   ├── shared/
 │   │   │   └── sidebar/
+│   │   │
 │   │   ├── app-routing.module.ts
 │   │   └── app.module.ts
-│   ├── assets/
-│   │   └── images/
-│   └── styles.scss
-├── angular.json
+│   │
+│   └── assets/
+│       └── images/
+│
 ├── package.json
 └── README.md
 ```
 
 ## Development Roadmap
 
-- [x] Project setup with Angular
-- [x] Noir-inspired dashboard interface
-- [x] Sidebar navigation
-- [x] Case archive page
-- [x] Case search and filtering
-- [ ] Individual case investigation pages
-- [ ] Suspect profiles and interrogation system
-- [ ] Evidence collection and analysis
+### Implemented
+
+- [x] Noir detective dashboard
+- [x] Case archive with filtering and search
+- [x] Case dossier page
+- [x] Crime scene report
+- [x] Suspect profiles
+- [x] Evidence archive
+- [x] Interactive evidence examination
+- [x] Dashboard navigation and investigation leads
+
+### Planned
+
 - [ ] Interactive investigation board
-- [ ] Case progression and completion system
-- [ ] Local data persistence
+- [ ] Evidence cross-referencing
+- [ ] Timeline reconstruction
+- [ ] Suspect interrogations
+- [ ] Final accusation system
+- [ ] Case solution reveal and detective scoring
+- [ ] Optional AI-powered investigation assistance
 
 ## Project Status
 
-**In development.**
+CASE/404 is currently a front-end prototype powered by local mock data. Backend integration and additional investigation mechanics are planned for future development.
 
-CASE/404 is an ongoing project. New investigation mechanics and features are being developed progressively.
+## Author
+
+**Mohamed Aziz Mghirbi**
+
+GitHub: [@vziz1312](https://github.com/vziz1312)
 
 ---
 
-<p align="center">
-  <strong>CASE/404</strong><br>
-  <em>Some truths are better left buried.</em>
-</p>
-
-<p align="center">
-  Developed by <a href="https://github.com/vziz1312">vziz1312</a>
-</p>
+*CASE/404 — The truth is hidden between the evidence.*
