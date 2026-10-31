@@ -1,9 +1,17 @@
-<div class="app-shell">
-
+<div class="app-shell" [class.sidebar-collapsed]="!sidebarOpen">
   <app-sidebar></app-sidebar>
 
   <main class="main-area">
+    <button
+      class="menu-toggle"
+      (click)="toggleSidebar()"
+      aria-label="Toggle sidebar"
+      [attr.aria-expanded]="sidebarOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <router-outlet></router-outlet>
   </main>
-
 </div>

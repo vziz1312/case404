@@ -1,18 +1,26 @@
 
 :host {
   display: block;
-  min-width: 0;
+  width: 248px;
+  min-width: 248px;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .sidebar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  width: 248px;
+  left: 0;
+  min-width: 248px;
   height: 100vh;
   min-height: 600px;
   display: flex;
   flex-direction: column;
   padding: 30px 19px 18px;
   overflow-y: auto;
+  overflow-x: hidden;
   background: #10100f;
   border-right: 1px solid rgba(190, 158, 111, .22);
   z-index: 5;
@@ -217,7 +225,7 @@
   color: #a69a86;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 950px) and (min-width: 681px) {
   .sidebar {
     padding-left: 12px;
     padding-right: 12px;
@@ -225,15 +233,21 @@
 }
 
 @media (max-width: 680px) {
-  .sidebar {
-    position: relative;
+  :host {
+    width: 100%;
+    min-width: 0;
     height: auto;
-    min-height: 0;
-    padding: 15px;
-    overflow: visible;
-    border-right: 0;
-    border-bottom: 1px solid rgba(182,154,103,.3);
   }
+
+  .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 248px;
+  min-width: 248px;
+  height: 100vh;
+  overflow-y: hidden;
+}
 
   .brand-block {
     padding-bottom: 12px;
