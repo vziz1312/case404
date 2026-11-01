@@ -1,0 +1,228 @@
+
+<div class="investigation-room">
+
+  <!-- Top navigation -->
+  <header class="room-header">
+    <div class="room-brand">
+      <span class="brand-mark">C/404</span>
+      <span class="brand-divider"></span>
+      <div>
+        <small>DETECTIVE AGENCY</small>
+        <strong>INVESTIGATION ROOM</strong>
+      </div>
+    </div>
+
+    <div class="room-case">
+      <span>ACTIVE CASE</span>
+      <strong>001 — THE LAST PHOTOGRAPH</strong>
+    </div>
+
+    <button class="exit-button" type="button" routerLink="/cases">
+      <span>←</span> CASE ARCHIVE
+    </button>
+  </header>
+
+  <!-- Main workspace -->
+  <main class="room-workspace">
+
+    <!-- Left case materials panel -->
+    <aside class="materials-panel">
+
+      <div class="panel-heading">
+        <span>CASE MATERIALS</span>
+        <span class="panel-number">01</span>
+      </div>
+
+      <div class="material-section">
+        <small>PERSONS OF INTEREST</small>
+
+        <div
+          class="material-item"
+          *ngFor="let suspect of suspects"
+          [class.already-added]="isOnBoard(suspect.id)"
+          (click)="addToBoard(suspect)"
+        >
+          <img [src]="suspect.image" [alt]="suspect.name">
+
+          <div>
+            <strong>{{ suspect.name }}</strong>
+            <span>{{ suspect.subtitle }}</span>
+          </div>
+
+          <span class="add-indicator">
+            {{ isOnBoard(suspect.id) ? '✓' : '+' }}
+          </span>
+        </div>
+      </div>
+
+      <div class="material-section evidence-section">
+        <small>PHYSICAL EVIDENCE</small>
+
+        <div
+          class="evidence-item"
+          *ngFor="let item of evidence"
+          [class.already-added]="isOnBoard(item.id)"
+          (click)="addToBoard(item)"
+        >
+          <span>{{ item.id }}</span>
+          <strong>{{ item.name }}</strong>
+          <span class="add-indicator">
+            {{ isOnBoard(item.id) ? '✓' : '+' }}
+          </span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Central investigation area -->
+    <section class="evidence-workspace">
+
+      <div class="workspace-heading">
+        <div>
+          <span>02 / INVESTIGATION SURFACE</span>
+          <h1>THE EVIDENCE WALL</h1>
+        </div>
+
+        <div class="connection-counter">
+          <strong>{{ connectionCount.toString().padStart(2, '0') }}</strong>
+          <span>CONNECTIONS</span>
+        </div>
+      </div>
+
+      <div
+        class="evidence-wall"
+        (dragover)="onDragOver($event)"
+        (drop)="onDrop($event)"
+      >
+
+        <div class="wall-instruction">
+          <span>INVESTIGATOR'S WORKSPACE</span>
+          <p>Examine the case materials and establish connections.</p>
+        </div>
+
+        <div class="wall-empty" *ngIf="placedItems.length === 0">
+          <span class="empty-symbol">✳</span>
+          <strong>THE INVESTIGATION BEGINS HERE</strong>
+          <p>Select evidence from the case archive to begin building your theory.</p>
+        </div>
+
+        <div class="placed-items" *ngIf="placedItems.length > 0">
+
+          <!-- CONNECTION LINES -->
+          <svg class="connection-layer">
+            <line
+              *ngFor="let connection of connections"
+              [attr.x1]="getItemX(connection.fromId)"
+              [attr.y1]="getItemY(connection.fromId)"
+              [attr.x2]="getItemX(connection.toId)"
+              [attr.y2]="getItemY(connection.toId)"
+              stroke="#a63838"
+              stroke-width="2"
+              stroke-dasharray="5 3"
+            />
+          </svg>
+
+          <!-- PLACED CARDS -->
+          <article
+            class="placed-card"
+            *ngFor="let item of placedItems"
+            draggable="true"
+            (dragstart)="onDragStart($event, item)"
+            [style.left.px]="item.x"
+            [style.top.px]="item.y"
+            [class.connection-selected]="selectedItemId === item.id"
+            (click)="selectForConnection(item)"
+          >
+
+            <button
+              type="button"
+              class="remove-item"
+              (click)="removeFromBoard(item.id); $event.stopPropagation()"
+              aria-label="Remove item"
+            >×</button>
+
+            <img [src]="item.image" [alt]="item.name">
+
+            <div class="placed-card-info">
+              <small>{{ item.category }} · {{ item.id }}</small>
+              <strong>{{ item.name }}</strong>
+              <span>{{ item.subtitle }}</span>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Right investigator notebook -->
+    <aside class="notebook-panel">
+
+      <div class="panel-heading">
+        <span>INVESTIGATOR'S NOTES</span>
+        <span class="panel-number">03</span>
+      </div>
+
+      <div class="notebook-meta">
+        <span>PRIVATE FIELD NOTES</span>
+        <span>CASE 001</span>
+      </div>
+
+      <!-- Observations -->
+      <div class="notebook-content">
+        <h2>Observations</h2>
+        <p>
+          Record your observations, questions and theories
+          as the investigation progresses.
+        </p>
+
+        <div class="notebook-rule"></div>
+
+        <div class="note-placeholder">
+          <span>01.</span>
+          <p>No observations recorded yet...</p>
+        </div>
+      </div>
+
+      <!-- Established connections -->
+      <div class="notebook-connections" *ngIf="connections.length > 0">
+        <h3>ESTABLISHED CONNECTIONS</h3>
+
+        <div
+          class="notebook-connection"
+          *ngFor="let connection of connections"
+        >
+          <div class="connection-names">
+            <span>{{ getItemName(connection.fromId) }}</span>
+            <span class="connection-arrow">↔</span>
+            <span>{{ getItemName(connection.toId) }}</span>
+          </div>
+
+          <button
+            type="button"
+            class="remove-connection"
+            (click)="removeConnection(connection.id)"
+          >
+            REMOVE LINE
+          </button>
+        </div>
+      </div>
+
+      <div class="notebook-footer">
+        CONFIDENTIAL · FOR INVESTIGATOR ONLY
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- Bottom status -->
+  <footer class="room-footer">
+    <span>PARIS POLICE ARCHIVE</span>
+    <span>CASE 001 · OCTOBER 30, 2026</span>
+    <span>ALL MATERIALS CONFIDENTIAL</span>
+  </footer>
+
+</div>

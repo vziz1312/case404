@@ -28,7 +28,7 @@
         [class.active]="activeNavigation === item.label"
         [attr.aria-current]="activeNavigation === item.label ? 'page' : null"
         (click)="selectNavigation(item.label)"
-        [disabled]="item.label !== 'Dashboard' && item.label !== 'Cases'">
+        [disabled]="item.label !== 'Dashboard' && item.label !== 'Cases' && item.label !== 'Investigation Board'">
 
         <span class="navigation-icon">{{ item.icon }}</span>
         <span class="navigation-text">{{ item.label }}</span>

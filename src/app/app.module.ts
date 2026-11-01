@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { CaseDossierComponent } from './pages/case-dossier/case-dossier.component';
 import { SuspectDossierComponent } from './pages/suspect-dossier/suspect-dossier.component';
+import { InvestigationBoardComponent } from './pages/investigation-board/investigation-board.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SuspectDossierComponent } from './pages/suspect-dossier/suspect-dossier
     DashboardComponent,
     SidebarComponent,
     CaseDossierComponent,
-    SuspectDossierComponent
+    SuspectDossierComponent,
+    InvestigationBoardComponent
   ],
   imports: [
     BrowserModule,

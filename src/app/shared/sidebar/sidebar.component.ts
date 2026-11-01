@@ -26,6 +26,7 @@ export class SidebarComponent {
       items: [
         { label: 'Dashboard', icon: '⌂' },
         { label: 'Cases', icon: '▤', badge: '01' },
+        { label: 'Investigation Board', icon: '▦' },
         { label: 'Evidence', icon: '◇', badge: '12' },
         { label: 'Suspects', icon: '♙', badge: '04' }
       ]
@@ -42,13 +43,14 @@ export class SidebarComponent {
   constructor(private router: Router) {}
 
   get activeNavigation(): string {
-    const path = this.router.url.split('?')[0];
+  const path = this.router.url.split('?')[0];
 
-    if (path.startsWith('/cases')) return 'Cases';
-    if (path.startsWith('/dashboard') || path === '/') return 'Dashboard';
+  if (path.startsWith('/investigation-board')) return 'Investigation Board';
+  if (path.startsWith('/cases')) return 'Cases';
+  if (path.startsWith('/dashboard') || path === '/') return 'Dashboard';
 
-    return '';
-  }
+  return '';
+}
 
   selectNavigation(label: string): void {
     if (label === 'Dashboard') {
@@ -57,6 +59,9 @@ export class SidebarComponent {
 
     if (label === 'Cases') {
       this.router.navigate(['/cases']);
+    }
+    if (label === 'Investigation Board') {
+      this.router.navigate(['/investigation-board']);
     }
   }
 }

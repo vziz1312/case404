@@ -1,0 +1,873 @@
+
+:host {
+  display: block;
+  min-height: 100%;
+  color: #e8dcc8;
+  font-family: var(--font-body);
+}
+
+.investigation-room {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #151310;
+  color: #e8dcc8;
+}
+
+/* HEADER */
+
+.room-header {
+  min-height: 78px;
+  padding: 14px 30px 14px 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: #171512;
+  border-bottom: 1px solid rgba(220, 171, 107, .2);
+  position: relative;
+  z-index: 2;
+}
+
+.room-brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.brand-mark {
+  color: #d6b27c;
+  font-family: var(--font-display);
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.brand-divider {
+  height: 35px;
+  width: 1px;
+  background: rgba(220, 171, 107, .35);
+}
+
+.room-brand div,
+.room-case {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.room-brand small,
+.room-case span {
+  color: #99876e;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.4px;
+}
+
+.room-brand strong,
+.room-case strong {
+  color: #e8dcc8;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.exit-button {
+  padding: 10px 14px;
+  background: transparent;
+  border: 1px solid rgba(220, 171, 107, .3);
+  color: #c9b18d;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .8px;
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+.exit-button:hover {
+  background: rgba(220, 171, 107, .1);
+  border-color: #c49b62;
+}
+
+.exit-button span {
+  margin-right: 7px;
+}
+
+/* MAIN ROOM */
+
+.room-workspace {
+  flex: 1;
+  min-height: 760px;
+  display: grid;
+  grid-template-columns: 245px minmax(400px, 1fr) 255px;
+  gap: 15px;
+  padding: 18px;
+  background:
+    linear-gradient(rgba(12, 11, 9, .22), rgba(12, 11, 9, .58)),
+    url('/assets/images/investigation-room.png') center center / cover no-repeat;
+  position: relative;
+}
+
+/* SIDE PANELS */
+
+.materials-panel,
+.notebook-panel {
+  background: rgba(22, 20, 17, .94);
+  border: 1px solid rgba(211, 175, 119, .25);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, .4);
+  min-width: 0;
+}
+
+.panel-heading {
+  min-height: 49px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(220, 171, 107, .2);
+  color: #d9bd91;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.panel-number {
+  color: #806b4e;
+}
+
+/* CASE MATERIALS */
+
+.material-section {
+  padding: 17px 14px 8px;
+}
+
+.material-section > small {
+  display: block;
+  margin-bottom: 13px;
+  color: #9c896f;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.material-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(220, 171, 107, .1);
+}
+
+.material-item img {
+  width: 39px;
+  height: 43px;
+  object-fit: cover;
+  filter: saturate(.7) sepia(.12);
+  border: 1px solid rgba(220, 171, 107, .25);
+}
+
+.material-item div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.material-item strong {
+  color: #e5d8c3;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.material-item span {
+  color: #9d907e;
+  font-size: 9px;
+}
+
+.evidence-section {
+  margin-top: 10px;
+  border-top: 1px solid rgba(220, 171, 107, .16);
+}
+
+.evidence-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(220, 171, 107, .1);
+}
+
+.evidence-item span {
+  min-width: 30px;
+  color: #b88d59;
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.evidence-item strong {
+  color: #d8cbb6;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+/* CENTRAL WORKSPACE */
+
+.evidence-workspace {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.workspace-heading {
+  min-height: 76px;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(20, 18, 15, .92);
+  border: 1px solid rgba(220, 171, 107, .25);
+}
+
+.workspace-heading > div:first-child > span {
+  color: #b99a6c;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.3px;
+}
+
+.workspace-heading h1 {
+  margin: 7px 0 0;
+  color: #eadcc5;
+  font-family: var(--font-display);
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.connection-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.connection-counter strong {
+  color: #d6b27c;
+  font-family: var(--font-display);
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.connection-counter span {
+  color: #9d8a70;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .7px;
+}
+
+.evidence-wall {
+  flex: 1;
+  min-height: 550px;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  background:
+    linear-gradient(rgba(22, 17, 12, .2), rgba(22, 17, 12, .3)),
+    url('/assets/images/investigation-room.png') 73% 20% / cover no-repeat;
+  border: 1px solid rgba(220, 171, 107, .35);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+}
+
+.wall-instruction {
+  display: inline-block;
+  padding: 12px 15px;
+  background: rgba(23, 20, 16, .88);
+  border-left: 2px solid #b58b55;
+}
+
+.wall-instruction span {
+  color: #d2b487;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.wall-instruction p {
+  margin: 7px 0 0;
+  color: #c4b49d;
+  font-size: 10px;
+}
+
+.wall-empty {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: min(320px, calc(100% - 40px));
+  padding: 27px 22px;
+  text-align: center;
+  background: rgba(24, 20, 16, .88);
+  border: 1px solid rgba(220, 171, 107, .27);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, .4);
+}
+
+.empty-symbol {
+  display: block;
+  margin-bottom: 14px;
+  color: #c69c65;
+  font-size: 25px;
+}
+
+.wall-empty strong {
+  color: #e2cfaf;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.wall-empty p {
+  margin: 10px 0 0;
+  color: #b5a58e;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* INVESTIGATOR'S NOTEBOOK */
+
+.notebook-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px;
+  color: #9e8b71;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .5px;
+  border-bottom: 1px solid rgba(220, 171, 107, .12);
+}
+
+.notebook-content {
+  margin: 14px;
+  min-height: 340px;
+  padding: 18px 15px;
+  color: #463a2c;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #d9c9a9 0,
+      #d9c9a9 28px,
+      #c6b48f 29px
+    );
+  box-shadow: 0 5px 14px rgba(0, 0, 0, .3);
+}
+
+.notebook-content h2 {
+  margin: 0 0 12px;
+  color: #4b3928;
+  font-family: var(--font-display);
+  font-size: 22px;
+}
+
+.notebook-content > p {
+  color: #66543f;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.notebook-rule {
+  height: 1px;
+  margin: 18px 0;
+  background: rgba(83, 63, 42, .3);
+}
+
+.note-placeholder {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.note-placeholder span {
+  color: #8d493f;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.note-placeholder p {
+  margin: 0;
+  color: #806e56;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-style: italic;
+}
+
+.notebook-footer {
+  padding: 12px;
+  color: #9c896f;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .7px;
+  text-align: center;
+  border-top: 1px solid rgba(220, 171, 107, .15);
+}
+
+/* FOOTER */
+
+.room-footer {
+  min-height: 36px;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  background: #171512;
+  border-top: 1px solid rgba(220, 171, 107, .18);
+  color: #88765f;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .7px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1150px) {
+  .room-workspace {
+    grid-template-columns: 215px minmax(300px, 1fr);
+  }
+
+  .notebook-panel {
+    grid-column: 1 / -1;
+  }
+
+  .notebook-content {
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 700px) {
+  .room-header {
+    flex-wrap: wrap;
+    padding: 14px;
+  }
+
+  .room-case {
+    order: 3;
+    width: 100%;
+  }
+
+  .room-workspace {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    min-height: auto;
+  }
+
+  .materials-panel,
+  .notebook-panel {
+    grid-column: auto;
+  }
+
+  .evidence-wall {
+    min-height: 480px;
+  }
+
+  .room-footer {
+    flex-wrap: wrap;
+  }
+}
+
+/* SELECTABLE CASE MATERIALS */
+
+.material-item,
+.evidence-item {
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.material-item:hover,
+.evidence-item:hover {
+  background: rgba(220, 171, 107, .09);
+}
+
+.material-item.already-added,
+.evidence-item.already-added {
+  background: rgba(220, 171, 107, .12);
+}
+
+.add-indicator {
+  margin-left: auto;
+  color: #d6b27c;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  opacity: .85;
+}
+
+/* ITEMS PLACED ON THE EVIDENCE WALL */
+
+.placed-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  align-content: start;
+  gap: 18px;
+  padding: 22px 5px;
+}
+
+.placed-card {
+  position: relative;
+  min-width: 0;
+  padding: 8px;
+  background: #d8c7a7;
+  color: #403326;
+  box-shadow: 0 7px 18px rgba(0, 0, 0, .45);
+  transform: rotate(-1deg);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.placed-card:nth-child(even) {
+  transform: rotate(1.2deg);
+}
+
+.placed-card:hover {
+  transform: translateY(-4px) rotate(0);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, .55);
+  z-index: 2;
+}
+
+.placed-card > img {
+  display: block;
+  width: 100%;
+  height: 125px;
+  object-fit: cover;
+  border: 1px solid rgba(67, 48, 29, .3);
+}
+
+.placed-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 11px 5px 7px;
+}
+
+.placed-card-info small {
+  color: #806346;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+.placed-card-info strong {
+  color: #382b20;
+  font-family: var(--font-display);
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.placed-card-info span {
+  color: #725d45;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.remove-item {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .45);
+  background: rgba(28, 22, 17, .85);
+  color: #f0dfc4;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.remove-item:hover {
+  background: #742e2c;
+}
+
+
+/* DRAGGABLE INVESTIGATION MATERIALS */
+
+.placed-items {
+  position: absolute;
+  inset: 0;
+  display: block;
+  padding: 0;
+  pointer-events: none;
+}
+
+.placed-card {
+  position: absolute;
+  width: 165px;
+  cursor: grab;
+  pointer-events: auto;
+  user-select: none;
+  touch-action: none;
+}
+
+.placed-card:active {
+  cursor: grabbing;
+}
+
+.placed-card img {
+  pointer-events: none;
+}
+
+.placed-card-info {
+  pointer-events: none;
+}
+
+.remove-item {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+
+/* INVESTIGATIVE CONNECTIONS */
+
+.connection-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.placed-card {
+  z-index: 2;
+}
+
+.placed-card.connection-selected {
+  outline: 2px solid #a63838;
+  outline-offset: 4px;
+  box-shadow: 0 0 18px rgba(166, 56, 56, .45);
+}
+
+.placed-card {
+  cursor: crosshair;
+}
+
+.placed-card:active {
+  cursor: grabbing;
+}
+
+/* Established connections in investigator notebook */
+.notebook-connections {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(119, 78, 36, 0.3);
+}
+
+.notebook-connections h3 {
+  margin: 0 0 14px;
+  color: #774e24;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.notebook-connection {
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(119, 78, 36, 0.2);
+}
+
+.connection-names {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  color: #3d3024;
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+.connection-arrow {
+  color: #a63838;
+  font-size: 16px;
+}
+
+.remove-connection {
+  margin-top: 8px;
+  padding: 5px 8px;
+  border: 1px solid rgba(166, 56, 56, 0.45);
+  background: transparent;
+  color: #963c36;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.remove-connection:hover {
+  background: rgba(166, 56, 56, 0.1);
+}
+
+/* Notebook layout correction */
+.notebook-panel {
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.notebook-content,
+.notebook-connections,
+.notebook-footer {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Connections use the same parchment surface */
+.notebook-connections {
+  margin-top: 0;
+  padding: 18px;
+  background: #dfcda8;
+  color: #3d3024;
+  border-top: 1px solid rgba(119, 78, 36, 0.3);
+}
+
+.notebook-connections h3 {
+  color: #774e24;
+  overflow-wrap: anywhere;
+}
+
+.notebook-connection {
+  min-width: 0;
+}
+
+.connection-names {
+  min-width: 0;
+  flex-wrap: wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.connection-names span {
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+/* Keep removal buttons inside the notebook */
+.remove-connection {
+  max-width: 100%;
+  white-space: normal;
+}
+
+/* =================================
+   COMPACT INVESTIGATION CARDS
+================================= */
+
+.placed-card {
+  width: 130px !important;
+}
+
+.placed-card img {
+  width: 100%;
+  height: 95px;
+  object-fit: cover;
+}
+
+.placed-card-info {
+  padding: 9px !important;
+  gap: 5px;
+}
+
+.placed-card-info small {
+  font-size: 8px;
+}
+
+.placed-card-info strong {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.placed-card-info span {
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.remove-item {
+  width: 25px;
+  height: 25px;
+}
+
+
+/* =================================
+   COMPACT INVESTIGATOR NOTEBOOK
+================================= */
+
+.notebook-panel {
+  min-width: 0;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.notebook-content {
+  flex-shrink: 0;
+  padding: 12px !important;
+}
+
+.notebook-content h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.notebook-content p {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.note-placeholder {
+  padding: 8px 0;
+  font-size: 11px;
+}
+
+.notebook-connections {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 8px;
+  padding: 12px !important;
+  background: #dfcda8;
+  scrollbar-width: thin;
+  scrollbar-color: #96764c transparent;
+}
+
+.notebook-connections h3 {
+  font-size: 9px;
+  margin-bottom: 8px;
+}
+
+.notebook-connection {
+  padding: 7px 0;
+}
+
+.connection-names {
+  font-size: 10px;
+  gap: 4px;
+  line-height: 1.4;
+}
+
+.connection-arrow {
+  font-size: 13px;
+}
+
+.remove-connection {
+  margin-top: 5px;
+  padding: 4px 6px;
+  font-size: 8px;
+}
+
+.notebook-footer {
+  flex-shrink: 0;
+  padding: 10px !important;
+  font-size: 8px;
+}
